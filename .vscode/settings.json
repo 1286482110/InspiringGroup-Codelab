@@ -1,3 +1,5 @@
 {
-  "restructuredtext.confPath": "${workspaceFolder}\\docs\\source"
+  "restructuredtext.confPath": "${workspaceFolder}\\docs\\source",
+  "editor.fontFamily": "Source Code Pro, 'Courier New', monospace",
+  "editor.wordWrap": "on"
 }

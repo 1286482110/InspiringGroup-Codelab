@@ -103,7 +103,7 @@ Paillier 密码系统的密钥生成步骤如下：
 
 .. note::
   
-  从实现的角度而言，因为 :math:`g` 是公钥，所以不必选取 :math:`g` 为随机数，例如可以直接选取 :math:`g = n+1` 。
+  从实现的角度而言，因为 :math:`g` 是公钥，所以不必选取 :math:`g` 为随机数，例如可以直接选取 :math:`g = n+1` 。我们也将在之后的证明中看到，如此选取的 :math:`g` 能够保证 :math:`L(g^\lambda \text{ mod } n^2)` 的确是一个整数。
 
 .. code:: python
 
@@ -149,3 +149,71 @@ Paillier 密码系统的解密步骤：对于密文 :math:`c` ，明文为 :math
     assert((k-1)%n == 0) # when (k-1)%n != 0, c is not a valid ciphertext.
     return (k-1)//n * mu % n  
 
+同态加法
+^^^^^^^^^^^^^^^^^^^
+
+对于密文 :math:`c_1` , :math:`c_2` 计算 :math:`c_3 = c_1 \cdot c_2 \text{ mod } n^2` 则 :math:`c_3` 是合法的密文，且
+
+.. math::
+  D(c_3) = D(c_1) + D(c_2)
+
+其中 :math:`D(c)` 为解密算法。
+
+.. code:: python
+  def evalAdd(c1, c2, n):
+    return c1 * c2 % (n*n)
+
+测试
+^^^^^^^^^^^^^^^^^^^^
+
+有了以上的代码，我们可以测试此实现是否确实满足同态性质。
+
+.. code:: python
+
+  # generate keys
+  n, g, Lambda, mu = generateKeys()
+  print(f"Public key:       n = {n:10d},  g = {g:10d}")
+  print(f"Private key: lambda = {Lambda:10d}, mu = {mu:10d}")
+
+  # plaintext
+  m1 = random.randint(0, n-1)
+  m2 = random.randint(0, n-1)
+
+  # ciphertext
+  c1 = encrypt(m1, n, g)
+  c2 = encrypt(m2, n, g)
+  print(f"c1 = Encrypt({m1}) = {c1:18d} = 0x{c1:015x}")
+  print(f"c2 = Encrypt({m2}) = {c2:18d} = 0x{c2:015x}")
+
+  # evaluate addition
+  c3 = evalAdd(c1, c2, n)
+  print(f"c3 = c1 * c2 = {c3:18d} = 0x{c3:015x}")
+
+  # decrypt
+  d = decrypt(c3, Lambda, mu, n)
+  print(f"Decrypt(c3) = {d} = {m1} + {m2} (mod {n})")
+
+我们提供了与以上代码对应的完整的 `Jupyter Notebook </../notebooks/paillier.ipynb>`_ 以供参阅。
+
+正确性证明
+------------------------
+
+加密与解密
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+由 :math:`\lambda = \text{lcm}(p-1, q-1)`，可记 :math:`\lambda = k_1(p-1) = k_2(q-1)`。
+
+因 :math:`g` 不是 :math:`p` 的倍数，由费马小定理可知 :math:`g^{\lambda} = g^{k_1 (p-1)} \equiv 1 \pmod{p}`；同理 :math:`g^{\lambda} \equiv 1 \pmod{q}`；从而 :math:`g^\lambda \equiv 1 \pmod{n}`，即 :math:`g^\lambda \text{ mod } n^2 \equiv 1 \pmod{n}`。记 :math:`g^\lambda \text{ mod } n^2 = kn + 1`，即 :math:`L(g^\lambda \text{ mod } n^2) = k`。
+
+由二项式定理，:math:`(1 + kn)^m \equiv knm + 1 \pmod{n^2}`，从而 :math:`g^{m\lambda} \equiv (kn+1)^m \equiv knm + 1 \pmod{n^2}`。
+
+同样，因为 :math:`\gcd(r, n) = 1`，则 :math:`r^\lambda \equiv 1`，记为 :math:`r^\lambda = k_r n + 1`，则 :math:`r^{\lambda n} \equiv k_r n^2 + 1 \equiv 1 \pmod {n^2}`。
+
+于是 :math:`L(g^{m\lambda}r^{n\lambda} \text{ mod } n^2) = L(knm + 1) = km`，从而 :math:`\mu L(g^{m\lambda}r^{n\lambda} \text{ mod } n^2) \equiv km / k \equiv m \pmod{n}`。
+
+同态加法
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+设两密文 :math:`c_1 = g^{m_1}r_1^n \text{ mod } n^2, c_2 = g^{m_2}r_2^n \text{ mod } n^2`，则 :math:`c_3 \equiv c_1c_2  \equiv g^{m_1+m_2} r_1^n r_2^n \pmod{n^2}`。
+
+由以上分析可知 :math:`g^{(m_1+m_2)\lambda} \equiv kn(m_1+m_2) + 1`，而 :math:`r_1^{\lambda n} \equiv r_2^{\lambda n} \equiv 1 \pmod{n^2}`，易得 :math:`\mu L(c_3^\lambda  \text{ mod } n^2) \equiv k(m_1+m_2) / k \equiv m_1 + m_2 \pmod{n}`。即加法同态成立。

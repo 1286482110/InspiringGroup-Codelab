@@ -30,7 +30,7 @@ Paillier 半同态密码系统
 
 Paillier 同态密码系统是由 Pascal Paillier 在 1999 年提出的半同态密码系统。它以密文乘法的形式计算明文上的同态模加法，因此它是一个半同态密码系统。
 
-我们将在接下来的部分中介绍一个简单的 python 版本的 Paillier 密码系统的实现，并在最后证明其正确性。
+我们将在接下来的部分中介绍一个简单的 python 版本的 Paillier 密码系统的实现，并在最后证明其正确性。您也可以直接查看我们提供的 `Jupyter Notebook </../notebooks/paillier.ipynb>`_ 。
 
 Paillier 密码系统的简单实现
 ----------------------------------

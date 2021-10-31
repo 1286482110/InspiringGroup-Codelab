@@ -8,13 +8,14 @@ Welcome to InspiringGroup - Codelab
 
 Our codelab is now under construction! You can visit our `homepage <https://inspiringgroup.github.io/>`_.
 
+Available Codes
+---------------
+
+1. A toy codelab implementing the Paillier HE cryptosystem. (:doc:`/paillier/paillier`)
+
+
 .. toctree::
 	:maxdepth: 2
 	:caption: Contents
 
 	/paillier/paillier
-
-Available Codes
----------------
-
-1. A toy codelab implementing the Paillier HE cryptosystem. (:doc:`/paillier/paillier`)

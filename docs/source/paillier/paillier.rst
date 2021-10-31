@@ -30,7 +30,7 @@ Paillier 半同态密码系统
 
 Paillier 同态密码系统是由 Pascal Paillier 在 1999 年提出的半同态密码系统。它以密文乘法的形式计算明文上的同态模加法，因此它是一个半同态密码系统。
 
-我们将在接下来的部分中介绍一个简单的 python 版本的 Paillier 密码系统的实现，并在最后证明其正确性。您也可以直接查看我们提供的 `Jupyter Notebook </../notebooks/paillier.ipynb>`_ 。
+我们将在接下来的部分中介绍一个简单的 python 版本的 Paillier 密码系统的实现，并在最后证明其正确性。您也可以直接查看我们在 Github 上提供的 Jupyter Notebook (notebooks/paillier.ipynb) 。
 
 Paillier 密码系统的简单实现
 ----------------------------------
@@ -160,6 +160,7 @@ Paillier 密码系统的解密步骤：对于密文 :math:`c` ，明文为 :math
 其中 :math:`D(c)` 为解密算法。
 
 .. code:: python
+
   def evalAdd(c1, c2, n):
     return c1 * c2 % (n*n)
 
@@ -193,7 +194,7 @@ Paillier 密码系统的解密步骤：对于密文 :math:`c` ，明文为 :math
   d = decrypt(c3, Lambda, mu, n)
   print(f"Decrypt(c3) = {d} = {m1} + {m2} (mod {n})")
 
-我们提供了与以上代码对应的完整的 `Jupyter Notebook </../notebooks/paillier.ipynb>`_ 以供参阅。
+我们在 Github 仓库中提供了与以上代码对应的完整的 Jupyter Notebook (notebooks/paillier.ipynb) 以供参阅。
 
 正确性证明
 ------------------------

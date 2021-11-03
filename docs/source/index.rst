@@ -19,3 +19,4 @@ Available Codes
 	:caption: Contents
 
 	/paillier/paillier
+	/zkp/pinocchio

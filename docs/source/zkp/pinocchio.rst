@@ -1,4 +1,4 @@
-Pinocchio-based zksnarks
+pinocchio-based-zksnarks
 ========================
 
 李琪 Li Qi
@@ -67,10 +67,10 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
 的输入和输出的有效赋值，当且仅当存在系数\ :math:`(c_1,...c_N)` 使 t
 (x)整除 p (x)，其中
 
-.. math:: p(x) = (v_0(x)+\Sigma_{k=1}^m{c_k\cdot v_k(x)})\cdot(w_0(x)+\Sigma_{k=1}^m{c_k\cdot w_k(x)})\cdot(y_0(x)+\Sigma_{k=1}^m{c_k\cdot y_k(x)})
+:math:`p(x) = (v_0(x)+\Sigma_{k=1}^m{c_k \cdot v_k(x)}) \cdot (w_0(x)+\Sigma_{k=1}^m{c_k \cdot w_k(x)}) \cdot (y_0(x)+\Sigma_{k=1}^m{c_k \cdot y_k(x)})`
 
-换句话说，一定存在多项式\ :math:`h(x)`\ 使得\ :math:` h (x) t (x) = p (x)`\ 。\ :math:`Q`
-的大小是\ :math:` m`\ ，\ :math:`Q`\ 的阶数等于\ :math:` t (x)`\ 的阶数。
+换句话说，一定存在多项式\ :math:`h(x)`\ 使得\ :math:`h(x)t(x)=p(x)`\ 。\ :math:`Q`
+的大小是\ :math:`m`\ ，\ :math:`Q`\ 的阶数等于\ :math:`t(x)`\ 的阶数。
 
 我们通常使用拉格朗日插值法构建QAP。
 
@@ -117,13 +117,9 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
 
    选择随机数\ :math:`r_v,r_w,s,\alpha_v,\alpha_w,\alpha_y,\beta,\gamma \stackrel{R}{\leftarrow} F`\ 。设\ :math:`r_y = r_v \cdot r_w, g_v = g^{r_v}, g_w = g^{r_w}, g_y = g^{r_y}`\ 。
 
-   .. math::
+   :math:`EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}},\{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}`
 
-      EK_F = (\{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}},\\
-      \{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\\
-      \{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\})
-
-   .. math:: VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}
+   :math:`VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}`
 
 2. 证明者（prover）提供证明 :
    :math:`(y,\pi_y) \leftarrow Compute(EK_F;u)`
@@ -132,12 +128,9 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
    同时他还得到了中间变量\ :math:`\{c_i\}_{i\in[m]}`\ 。他得到了h
    (x)通过p (x) = h (x) t (x)，并计算了证明\ :math:`\pi`\ 。
 
-   .. math::
+   :math:`\pi = (g_v^{v_{mid}(s)},g_w^{w_{mid}(s)},g_y^{y_{mid}(s)},g^{h(s)},g_v^{\alpha_vv_{mid}(s)},g_w^{\alpha_ww_{mid}(s)},g_y^{\alpha_yy_{mid}(s)},g_v^{\beta v_{mid}(s)}g_w^{\beta w_{mid}(s)}g_y^{\beta y_{mid}(s)})` 
 
-      \pi = (g_v^{v_{mid}(s)},g_w^{w_{mid}(s)},g_y^{y_{mid}(s)},\\
-      g^{h(s)},\\
-      g_v^{\alpha_vv_{mid}(s)},g_w^{\alpha_ww_{mid}(s)},g_y^{\alpha_yy_{mid}(s)},\\
-      g_v^{\beta v_{mid}(s)}g_w^{\beta w_{mid}(s)}g_y^{\beta y_{mid}(s)})
+      
 
    其中，\ :math:`v_{mid}(x) = \Sigma_{k \in I_{mid}}c_k \cdot v_k(s)`\ ，同理计算\ :math:`w_{mid}(s),y_{mid}(s)`\ 。
 
@@ -150,19 +143,17 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
 
    验证计算正确性：
 
-   .. math:: e(g_v^{v_0(s)}g_v^{v_{io}(s)}g_v^{V_{mid}},g_w^{w_0(s)}g_w^{w_{io}(s)}g_w^{W_{mid}}) = e(g_y^{t(s)},g^H)e(g_y^{y_0(s)}g_y^{y_{io}(s)}g_y^{Y_{mid}},g)
+   :math:`e(g_v^{v_0(s)}g_v^{v_{io}(s)}g_v^{V_{mid}},g_w^{w_0(s)}g_w^{w_{io}(s)}g_w^{W_{mid}}) = e(g_y^{t(s)},g^H)e(g_y^{y_0(s)}g_y^{y_{io}(s)}g_y^{Y_{mid}},g)` 
 
    验证可变多项式约束：
-
-   .. math::
-
-      e(g_v^{V'_{mid}},g) = e(g_v^{V_{mid}},g^{\alpha_v})\\
-      e(g_w^{W'_{mid}},g) = e(g_w^{W_{mid}},g^{\alpha_w})\\
-      e(g_y^{Y'_{mid}},g) = e(g_y^{Y_{mid}},g^{\alpha_y})
-
+   
+   :math:`e(g_v^{V'_{mid}},g) = e(g_v^{V_{mid}},g^{\alpha_v})` 
+   :math:`e(g_w^{W'_{mid}},g) = e(g_w^{W_{mid}},g^{\alpha_w})` 
+   :math:`e(g_y^{Y'_{mid}},g) = e(g_y^{Y_{mid}},g^{\alpha_y})` 
+      
    验证每个线性组合是否使用了相同的系数：
 
-   .. math:: e(g^Z,g^\gamma) = e(g_v^{V_{mid}}g_w^{W_{mid}}g_y^{Y_{mid}},g^{\beta\gamma})
+   :math:`e(g^Z,g^\gamma) = e(g_v^{V_{mid}}g_w^{W_{mid}}g_y^{Y_{mid}},g^{\beta\gamma})`
 
 .. _3-implementation:
 

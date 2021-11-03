@@ -116,6 +116,10 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
    map）\ :math:`e:G\times G \rightarrow G_T`\ 。g是G的生成元。
 
    选择随机数\ :math:`r_v,r_w,s,\alpha_v,\alpha_w,\alpha_y,\beta,\gamma \stackrel{R}{\leftarrow} F`\ 。设\ :math:`r_y = r_v \cdot r_w, g_v = g^{r_v}, g_w = g^{r_w}, g_y = g^{r_y}`\ 。
+   
+   .. math::
+   
+   E(x) \oplus E(y) = E(x \circ y)
 
    :math:`EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}},\{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}`
 

@@ -15,6 +15,13 @@ pinocchio-based-zksnarks
 
 随着技术的发展，计算能力表现出不对称的特性，例如云计算等拥有大量的算力，而移动设备等算力十分有限。因此，一些计算能力较弱的客户端设备希望通过外包计算的方式，将计算任务外包给算力强大的设备。而此时，这些客户端就希望在得到计算结果的同时，可以验证结果的正确性，以防止偶然的错误或恶意的攻击。同时，从另一方面，提供外包计算服务的服务商也希望可以证明自己的工作，这样，他们既可以要求更高的价格，又可以摆脱不必要的责任。
 
+.. math::
+
+  \begin{aligned}
+    E(x) \oplus E(y) = & E(x + y) \\
+    E(x) \otimes E(y) = & E(xy)
+  \end{aligned}
+
 .. _12-什么是零知识证明:
 
 1.2 什么是零知识证明?
@@ -118,24 +125,24 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
    选择随机数\ :math:`r_v,r_w,s,\alpha_v,\alpha_w,\alpha_y,\beta,\gamma \stackrel{R}{\leftarrow} F`\ 。设\ :math:`r_y = r_v \cdot r_w, g_v = g^{r_v}, g_w = g^{r_w}, g_y = g^{r_y}`\ 。
    
    .. math::
-   
-   \begin{aligned}
-      E(x) \oplus E(y) = & E(x + y) \\
-      E(x) \otimes E(y) = & E(xy)
-   \end{aligned}
+
+     \begin{aligned}
+       E(x) \oplus E(y) = & E(x + y) \\
+       E(x) \otimes E(y) = & E(xy)
+     \end{aligned}
    
    .. math::
    
-   \begin{aligned}
-      EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}}, \\
-      \{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\\
-      \{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}
-   \end{aligned}
+     \begin{aligned}
+       EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}}, \\
+       \{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\\
+       \{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}
+     \end{aligned}
    
    .. math::
 
-   VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},\\
-   g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}
+     VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},\\
+     g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}
 
 2. 证明者（prover）提供证明 :
    :math:`(y,\pi_y) \leftarrow Compute(EK_F;u)`

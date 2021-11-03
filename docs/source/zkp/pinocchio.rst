@@ -119,11 +119,14 @@ Program <https://link.springer.com/content/pdf/10.1007/978-3-642-38348-9_37.pdf>
    
    .. math::
    
-   EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}},\{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}
+   EK_F = \{g_v^{v_k(s)}\}_{k \in I_{mid}},\{g_w^{w_k(s)}\}_{k \in I_{mid}},\{g_y^{y_k(s)}\}_{k \in I_{mid}}, \\
+   \{g_v^{\alpha_v v_k(s)}\}_{k \in I_{mid}},\{g_w^{\alpha_w w_k(s)}\}_{k \in I_{mid}},\{g_y^{\alpha_yy_k(s)}\}_{k \in I_{mid}},\\
+   \{g^{s^i}\}_i \in [d],\{g_v^{\beta v_k(s)} g_w^{\beta w_k(s)} g_y^{\beta y_k(s)}\}
    
    .. math::
 
-   VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}
+   VK_F = (g^1,g^{\alpha_v},g^{\alpha_w},g^{\alpha_y},\\
+   g^{\gamma},g_y^{t(s)},\{g_v^{v_k(s)},g_w^{w_k(s)},g_y^{y_k(s)}\}_{k\in{0}\cup[N]}
 
 2. 证明者（prover）提供证明 :
    :math:`(y,\pi_y) \leftarrow Compute(EK_F;u)`

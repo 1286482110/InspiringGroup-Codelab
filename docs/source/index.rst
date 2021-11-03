@@ -12,7 +12,7 @@ Available Codes
 ---------------
 
 1. A toy codelab implementing the Paillier HE cryptosystem. (:doc:`/paillier/paillier`)
-
+2. An implementation of Pinocchio Protocol in Go language. (:doc:`/zkp/pinocchio`)
 
 .. toctree::
 	:maxdepth: 2

@@ -1,6 +1,4 @@
-# Pinocchio-based zksnarks
-
-李琪 Li Qi 
+# Pinocchio-based zksnarks 
 
 ## 1 零知识证明和zksnarks
 
